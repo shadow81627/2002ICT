@@ -1,0 +1,256 @@
+<HTML>
+
+<HEAD>
+
+   <TITLE> Data Modelling Exercises  </TITLE>
+
+   <META NAME=GENERATOR CONTENT="Microsoft FrontPage 6.0">
+
+   <X-SAS-WINDOW TOP=62 BOTTOM=451 LEFT=89 RIGHT=619>
+
+</HEAD>
+
+<BODY background="img/tabbkgnd.jpg" bgproperties="fixed">
+
+
+
+<P ALIGN=CENTER><B><FONT SIZE=4>&nbsp;Griffith University<br>
+ School of
+
+Information and Computing Technology</FONT></B></P>
+
+
+
+<P ALIGN=CENTER><B><FONT SIZE=4> Database Design SQL Examples</FONT></B></P>
+
+
+
+<P>&nbsp;</P>
+
+
+
+<P>There are two groups of questions below (solutions are given at
+
+each exercise). Complete these tasks and check solutions. Be reminded
+
+that for any English query there are several possible solutions.</P>
+
+
+
+<UL>
+
+   <LI><A HREF="#Anchor4236">Group I</A> (query only) these SQL
+
+   statements can be executed against the COMPANY database owned by
+
+   your convener.
+
+   
+
+   <LI><A HREF="#Anchor5815">Group II</A> (including updates). These
+
+   SQL statements should be executed against your own COMPANY
+
+   database instance. How to create your own copy of the COMPANY
+
+   database instance is also described in the
+
+   <A HREF="../README.html"> instructions</A>.
+
+   
+
+   <P>Beware: Especially when you are experimenting with update
+
+   queries you should realise that anything you did to the database
+
+   (including the effects of unintended updates) remain in the
+
+   database as long as you don't delete them.</P>
+
+   
+
+   <P>When experimenting with updates you may want to
+
+   start again with a clean
+
+   original COMPANY database (use the scripts), instead of cleaning the database
+
+   from the effects of unintended updates.</P>
+
+      <hr>
+
+
+</UL>
+
+
+
+<P><A NAME="Anchor4236"></A></P>
+
+
+
+<P ALIGN=CENTER><B>Question Group I</B></P>
+
+
+
+<P>[<A HREF="q1.sql">Q1</A>] Select the names and ssn's of employees
+
+whose supervisor works more then 10 hours on any one project</P>
+
+
+
+<P>[<A HREF="q2.sql">Q2</A>] List the names of female managers.</P>
+
+
+
+<P>[<A HREF="q3.sql">Q3</A>] List the minimum, maximum, and average
+
+salary of department managers (<A HREF="q3b.sql">alternative
+
+solution</A>)</P>
+
+
+
+<P>[<A HREF="q4.sql">Q4</A>] List the name and ssn of those employees
+
+who work on all projects located in Stafford.</P>
+
+
+
+<P>[<A HREF="q5.sql">Q5</A>] List every possible pair of projects
+
+that are located in the same city.</P>
+
+
+
+<P>[<A HREF="q6.sql">Q6</A>] List the name and ssn of those
+
+department managers who work more then 10 hours on some project. You
+
+must eliminate duplicate tuples from the result.</P>
+
+
+
+<P>[<A HREF="q7.sql">Q7</A>] List, in alphabetical order, the names
+
+(together with their ssn) of those employees who have exactly one
+
+dependent.</P>
+
+
+
+<P>[<A HREF="q8.sql">Q8</A>] List the names of those departments that
+
+have no employee who works on no project at all.</P>
+
+
+
+   <hr>
+
+
+
+<P><A NAME="Anchor5815"></A></P>
+
+
+
+<P ALIGN=CENTER><B>Question Group II</B></P>
+
+
+
+<P>[<A HREF="q9.sql">Q9</A>, <A HREF="q9b.sql">Q9b</A>] Create a new
+
+department with department manager "Ahmad Jabbar", department number
+
+3, and department name "Rockets". The location of the department
+
+should be "Brisbane".</P>
+
+
+
+<P>to test your solution look at the result of
+
+<A HREF="q9test.sql">executing</A></P>
+
+
+
+<PRE>   	 select D.DNAME, D.DNUMBER, D.MGRSSN, L.DLOCATION
+
+         from DEPARTMENT D, DEPT_LOCATIONS L 
+
+	    where  D.DNUMBER = L.DNUMBER
+
+&nbsp;</PRE>
+
+
+
+<P>[<A HREF="q10.sql">Q10</A>] Let James Borg be supervised by the
+
+department manager of the department located in Stafford. (You must
+
+NOT explicitly include in your update statement any department number
+
+values!) to test your solution look at the result of
+
+<A HREF="q10test.sql">executing</A></P>
+
+
+
+<PRE> 	   select name ssn, superssn from employee
+
+&nbsp;</PRE>
+
+
+
+<P>[<A HREF="q11.sql">Q11</A>] Create a view called employee_location
+
+with an entry for each employee [name and ssn] - location
+
+[location_name] pair such that the employee works on a project at
+
+that location. Eliminate duplicate tuples from the view.</P>
+
+
+
+<P>to test your solution look at the result of
+
+<A HREF="q11test.sql">executing</A></P>
+
+
+
+<PRE>	    select * from employee_location;
+
+&nbsp;</PRE>
+
+
+
+<P>[<A HREF="q12.sql">Q12</A>] Using the above created view
+
+"employee_location" create a view called sum_location such that for
+
+each location it is shown how many employees work there. (The view
+
+should show attributes: location_name, number_of_employees)</P>
+
+
+
+<P>to test your solution look at the result of
+
+<A HREF="q12test.sql">executing</A></P>
+
+
+
+<PRE> 
+
+		select * from sum_location</PRE>
+
+
+
+      <hr>
+
+
+
+<P><HR>
+
+</BODY>
+
+</HTML>
+

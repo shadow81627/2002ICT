@@ -1,0 +1,31 @@
+/* Damien Robinson s5014219 */
+DROP VIEW project_bosses;
+
+--Q1 works
+SELECT E.name, E.bdate
+FROM Employee E
+WHERE E.ssn IN (SELECT W.essn FROM Works_on W)
+ORDER BY E.name, E.bdate;
+
+--Q2 works
+SELECT E.ssn, SUM(W.hours) AS Total_Hours
+FROM Employee E, Works_on W
+WHERE E.ssn IN (SELECT D.essn FROM Dependent D)
+AND E.ssn IN (SELECT X.essn FROM Works_on X)
+AND E.ssn = W.essn 
+GROUP BY E.ssn;
+
+--Q3 works
+SELECT SUM(E.salary) AS Average_Female_Manager_Salary
+FROM Employee E
+WHERE E.sex = 'F' 
+AND E.ssn IN (SELECT D.mgrssn FROM Department D);
+
+--Q4 works
+CREATE VIEW project_bosses AS
+SELECT E.name, P.pnumber 
+FROM Employee E, Project P, Department D
+WHERE D.dnumber = P.dnum
+AND E.ssn = D.mgrssn;
+
+SELECT * FROM project_bosses;

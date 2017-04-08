@@ -1,0 +1,28 @@
+Useful System tables and sqlplus commands
+
+select * from USER_CATALOG;
+select * from USER_FREE_SPACE;
+select * from USER_TABLES;
+select * from USER_VIEWS;
+select * from USER_TAB_COLUMNS;
+select * from USER_TABLESPACES;
+select * from USER_TAB_GRANTS_MADE;
+
+set number of lines on display to 20 and line length to 180:
+
+set PageSize 20 
+set Pause HitReturn
+set line 180;
+
+display all constraints:
+
+select * from USER_CONSTRAINTS;
+
+display relevant constraints only:
+
+select substr(uc.table_name,1,15) as table_name, substr(uc.constraint_name,1,25) as constraint_name, substr(uc.r_constraint_name,1,15) as foreign_key_to, substr(ucc.column_name,1,15) as column_name, uc.constraint_type, uc.search_condition from user_constraints uc, user_cons_columns ucc where uc.constraint_name=ucc.constraint_name and uc.table_name=ucc.table_name and uc.owner=ucc.owner and uc.table_name not like 'REP%' and uc.table_name not like 'DEF%' and uc.table_name not like 'AQ%' and uc.table_name not like 'SQLPLUS%' and uc.table_name not like 'HELP%'
+
+describe the table (relation) employee:
+
+describe employee;
+
